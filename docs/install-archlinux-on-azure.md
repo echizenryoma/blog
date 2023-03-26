@@ -104,4 +104,10 @@ cp /boot/efi/EFI/arch/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 
 ### 2.6 重启
 
-## 3 参考文章
+* 在管理界面重启虚拟机
+
+## 3. 参考文章
+
+1. [Arch Linux on a VPS](https://wiki.archlinux.org/title/Arch_Linux_on_a_VPS)
+2. [Install Arch Linux from existing Linux](https://wiki.archlinux.org/title/Install_Arch_Linux_from_existing_Linux)
+3. [Inside Out | Archlinux on Azure](https://codito.in/archlinux-on-azure/)
