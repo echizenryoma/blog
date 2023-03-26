@@ -10,7 +10,7 @@
 ### 1.1 bootstrap
 
 ```bash
-wget "https://mirrors.kernel.org/archlinux/iso/2023.02.01/archlinux-bootstrap-x86_64.tar.gz" -O /archlinux-bootstrap-x86_64.tar.gz
+wget "https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-x86_64.tar.gz" -O /archlinux-bootstrap-x86_64.tar.gz
 mkdir /install
 tar xzf /archlinux-bootstrap-x86_64.tar.gz --numeric-owner
 ```
