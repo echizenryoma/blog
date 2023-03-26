@@ -95,6 +95,7 @@ arch-chroot /mnt
 
 * 重新生成initramfs: `mkinitcpio -P`
 * 删除fallback镜像: `rm /boot/initramfs-linux-lts-fallback.img`
+* 安装grub: `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch`
 * 生成grub配置: `grub-mkconfig -o /boot/grub/grub.cfg`
 * 由于Hyper-V只能通过`/EFI/BOOT/BOOTX64.EFI`引导，所以需要复制引导程序
 ```bash
