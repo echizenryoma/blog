@@ -1,7 +1,3 @@
-# README
+# 关于
 
-## 1. Local Preview
-
-```bash
-docsify serve docs --port 30080
-```
+* GitHub: [echizenryoma](https://github.com/echizenryoma)
