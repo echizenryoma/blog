@@ -30,8 +30,7 @@
 ### 0.2 常用命令
 
 * `iw phy`: 查看无线网卡详细参数
-* `iw dev wlan0 scan`: 无线网卡`wlan0`扫描热点世代名称[注 1]	IEEE标准	最大速率
-
+* `iw dev wlan0 scan`: 无线网卡`wlan0`扫描热点
 * `iw wlan0 info`: 查看无线网卡当前运行情况
 * `iw reg get`: 获取当前国家码和非授权频率范围
 * `iw reg set CN`: 设置当前国家码为`CN`
