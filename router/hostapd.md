@@ -261,7 +261,24 @@ $$
 * `iw reg get`: 获取当前国家码和非授权频率范围
 * `iw reg set CN`: 设置当前国家码为`CN`
 
-## 1. 参考配置
+## 1. 编译
+
+由于arch的hostapd并没有启用802.11ax，因此需要自己启用并重新编译
+
+[config](https://github.com/archlinux/svntogit-community/blob/packages/hostapd/trunk/config#L162)修改
+
+```diff
+ # IEEE 802.11ax HE support
+ # Note: This is experimental and work in progress. The definitions are still
+ # subject to change and this should not be expected to interoperate with the
+ # final IEEE 802.11ax version.
+-#CONFIG_IEEE80211AX=y
++CONFIG_IEEE80211AX=y
+```
+
+## 2. 配置
+
+### 2.1 参考配置
 
 ```conf
 interface=wlan0
@@ -278,8 +295,6 @@ wpa=2
 wpa_passphrase=[密码]
 wpa_key_mgmt=WPA-PSK WPA-PSK-SHA256 SAE
 wpa_pairwise=CCMP
-auth_algs=1
-macaddr_acl=0
 
 ieee80211h=1
 
@@ -294,7 +309,6 @@ ieee80211ac=1
 vht_capab=[MAX-MPDU-11454][RXLDPC][VHT160][SHORT-GI-80][SHORT-GI-160][TX-STBC-2BY1][RX-STBC-1][SU-BEAMFORMER][SU-BEAMFORMEE][MAX-A-MPDU-LEN-EXP3][RX-ANTENNA-PATTERN][TX-ANTENNA-PATTERN]
 vht_oper_chwidth=2
 vht_oper_centr_freq_seg0_idx=50
-use_sta_nsts=1
 
 ieee80211ax=1
 he_su_beamformer=1
@@ -303,5 +317,159 @@ he_mu_beamformer=1
 he_bss_color=8
 he_oper_chwidth=2
 he_oper_centr_freq_seg0_idx=50
-he_basic_mcs_nss_set=2
+```
+
+### 2.2 配置解析
+
+* interface: 无线网卡设备名
+* bridge: 绑定的网桥设备名(可选)
+* driver: 使用的驱动
+  * hostap
+  * nl80211
+* ssid: Wi-Fi热点名称
+* utf8_ssid: Wi-Fi热点名称使用UTF-8编码(可选)
+* hw_mode: 硬件工作模式
+  * a = IEEE 802.11a (5 GHz)
+  * b = IEEE 802.11b (2.4 GHz)
+  * g = IEEE 802.11g (2.4 GHz)
+  * ad = IEEE 802.11ad (60 GHz)
+* channel: 信道号
+* ieee80211w: 无线网络管理帧的保护
+* wpa: WPA版本，注意WPA3这里也是设置为2
+* wpa_passphrase: WPA密码
+* wpa_key_mgmt: 推荐WPA-PSK(WPA2-Personal)和SAE(WPA3-Personal)
+* wpa_pairwise: 推荐CCMP，废弃TKIP
+* ieee80211h: 为了符合电波管制的要求，IEEE 802.11h定义了两种服务：传输功率控制和动态频率选择，如果需要雷达避让频段必须启用
+* ieee80211d: 附加调节域的操作规范，主要是设置国际码
+* ieee80211n: IEEE 802.11n支持
+* ht_capab: HT特性
+* ieee80211ac: IEEE 802.11ac支持
+* vht_capab: VHT特性
+* vht_oper_chwidth: VHT信道宽度
+  * 0 = 20/40 MHz
+  * 1 = 80 MHz
+  * 2 = 160 MHz
+  * 3 = 80+80 MHz
+* vht_oper_centr_freq_seg0_idx: 频率0的中心信道号
+* vht_oper_centr_freq_seg1_idx: 频率1的中心信道号，仅vht_oper_chwidth=3设置
+* ieee80211ax: IEEE 802.11ax支持
+* he_su_beamformer: 单用户发送端波束成形
+* he_su_beamformee: 单用户接收端波束成形
+* he_mu_beamformer: 多用户发送端波束成形
+* he_bss_color: BSS着色，减少相同频率的干扰
+* he_oper_chwidth: =vht_oper_chwidth
+* he_oper_centr_freq_seg0_idx: =vht_oper_chwidth
+
+#### HT特性
+
+```console
+> iw phy
+...
+        Band 1:
+                Capabilities: 0x19e3
+                        RX LDPC
+                        HT20/HT40
+                        Static SM Power Save
+                        RX HT20 SGI
+                        RX HT40 SGI
+                        TX STBC
+                        RX STBC 1-stream
+                        Max AMSDU length: 7935 bytes
+                        DSSS/CCK HT40
+                Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+                Minimum RX AMPDU time spacing: No restriction (0x00)
+                HT TX/RX MCS rate indexes supported: 0-15
+...
+```
+* [LDPC]
+* [HT40-]/[HT40+]
+* [SHORT-GI-20]
+* [SHORT-GI-40]
+* [TX-STBC]
+* [RX-STBC1]
+* [MAX-AMSDU-7935]
+* [DSSS_CCK-40]
+
+#### VHT特性
+
+```console
+> iw phy
+...
+        Band 2:
+...
+                Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
+                Minimum RX AMPDU time spacing: No restriction (0x00)
+                HT TX/RX MCS rate indexes supported: 0-15
+                VHT Capabilities (0x339139f6):
+                VHT Capabilities (0x339139f6):
+                        Max MPDU length: 11454
+                        Supported Channel Width: 160 MHz
+                        RX LDPC
+                        short GI (80 MHz)
+                        short GI (160/80+80 MHz)
+                        TX STBC
+                        SU Beamformer
+                        SU Beamformee
+                        MU Beamformee
+                        RX antenna pattern consistency
+                        TX antenna pattern consistency
+...
+```
+
+* [MAX-A-MPDU-LEN-EXP3]
+* [MAX-MPDU-11454]
+* [VHT160]
+* [RXLDPC]
+* [SHORT-GI-80]
+* [SHORT-GI-160]
+* [TX-STBC-2BY1]
+* [SU-BEAMFORMER]
+* [SU-BEAMFORMEE]
+* [RX-ANTENNA-PATTERN]
+* [TX-ANTENNA-PATTERN]
+
+#### HT特性
+
+```console
+> iw phy
+...
+        Band 4:
+                HE Iftypes: managed
+                        HE MAC Capabilities (0x000b9a100840):
+                                +HTC HE Supported
+                                TWT Requester
+                                Dynamic BA Fragementation Level: 1
+                                Broadcast TWT
+                                OM Control
+                                Maximum A-MPDU Length Exponent: 3
+                                RX Control Frame to MultiBSS
+                                A-MSDU in A-MPDU
+                                UL 2x996-Tone RU
+                        HE PHY Capabilities: (0x0c334c89fd0980c80e0c00):
+                                HE40/HE80/5GHz
+                                HE160/5GHz
+                                Punctured Preamble RX: 3
+                                Device Class: 1
+                                LDPC Coding in Payload
+                                STBC Tx <= 80MHz
+                                STBC Rx <= 80MHz
+                                Full Bandwidth UL MU-MIMO
+                                DCM Max Constellation: 1
+                                DCM Max Constellation Rx: 1
+                                SU Beamformer
+                                SU Beamformee
+                                Beamformee STS <= 80Mhz: 7
+                                Beamformee STS > 80Mhz: 7
+                                Sounding Dimensions <= 80Mhz: 1
+                                Sounding Dimensions > 80Mhz: 1
+                                PPE Threshold Present
+                                Max NC: 1
+                                STBC Tx > 80MHz
+                                STBC Rx > 80MHz
+                                20MHz in 40MHz HE PPDU 2.4GHz
+                                20MHz in 160/80+80MHz HE PPDU
+                                80MHz in 160/80+80MHz HE PPDU
+                                TX 1024-QAM
+                                RX 1024-QAM
+...
 ```
