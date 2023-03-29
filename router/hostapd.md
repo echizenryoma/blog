@@ -347,6 +347,54 @@ git clone https://github.com/qca/qca-swiss-army-knife.git
 ./qca-swiss-army-knife/tools/scripts/ath11k/ath11k-bdencoder -c board-2.json -o board-2.bin
 ```
 
+### 1.3 注册
+
+```shell
+$ iw reg get
+global
+country CN: DFS-FCC
+        (2400 - 2483 @ 40), (N/A, 20), (N/A)
+        (5150 - 5350 @ 80), (N/A, 20), (0 ms), DFS, AUTO-BW
+        (5725 - 5850 @ 80), (N/A, 33), (N/A)
+        (57240 - 59400 @ 2160), (N/A, 28), (N/A)
+        (59400 - 63720 @ 2160), (N/A, 44), (N/A)
+        (63720 - 65880 @ 2160), (N/A, 28), (N/A)
+
+phy#0 (self-managed)
+country CN: DFS-FCC
+        (2402 - 2482 @ 40), (N/A, 20), (N/A)
+        (5170 - 5250 @ 80), (N/A, 23), (N/A), AUTO-BW
+        (5250 - 5330 @ 80), (N/A, 23), (0 ms), DFS, AUTO-BW
+        (5735 - 5835 @ 80), (N/A, 33), (N/A), AUTO-BW
+```
+
+* 全局设置(`global`)的国家码可以通过修改`/etc/conf.d/wireless-regdom`，取消相应的国家码注释，重启生效
+* 无线网卡设备
+  * 使用全局设置: 设置相应的全局配置即可
+  * 设备自管理(`self-managed`): 这个需要主动扫描热点，设备会根据热点自动注册
+
+```bash
+#!/bin/bash
+echo "ip link set wlan0 up"
+ip link set wlan0 up
+
+for i in {1..16}
+do
+  country=$(iw phy phy0 reg get | grep country | awk '{print $2}' | tr -d ':')
+  if [[ "$country" != "00" ]]
+  then
+    echo "find iw reg $country"
+    sed -i "s|^country_code=.*|country_code=$country|" /etc/hostapd/hostapd.conf
+    exit 0
+  fi
+  echo "iw dev wlan0 scan"
+  iw dev wlan0 scan > /dev/null
+done
+
+echo "not found country"
+exit 1
+```
+
 ## 2. 配置
 
 ### 2.1 参考配置
