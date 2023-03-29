@@ -407,7 +407,6 @@ he_oper_centr_freq_seg0_idx=50
                 Minimum RX AMPDU time spacing: No restriction (0x00)
                 HT TX/RX MCS rate indexes supported: 0-15
                 VHT Capabilities (0x339139f6):
-                VHT Capabilities (0x339139f6):
                         Max MPDU length: 11454
                         Supported Channel Width: 160 MHz
                         RX LDPC
