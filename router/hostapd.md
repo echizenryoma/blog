@@ -288,6 +288,7 @@ $$
 | 芯片     | Qualcomm Atheros WCN6856                                       |
 | 天线     | 2 x IPEX MHF4                                                  |
 | 支持频率 | 2.412\~2.484GHz, 5.150\~5.850GHz, 5.925\~7.125GHz              |
+| 支持模式 | 20MHz, 40MHz, 80MHz, 160MHz, 80+80MHz                          |
 
 `linux-firmware`在`20230310`标签之后才支持该网卡，对于之前版本需要自己动手修改[kvalo/ath11k-firmware](https://github.com/kvalo/ath11k-firmware)
 
