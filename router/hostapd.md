@@ -263,6 +263,8 @@ $$
 
 ## 1. 编译
 
+### 1.1 hostapd
+
 由于arch的hostapd并没有启用802.11ax，因此需要自己启用并重新编译
 
 [config](https://github.com/archlinux/svntogit-community/blob/packages/hostapd/trunk/config#L162)修改
@@ -275,6 +277,10 @@ $$
 -#CONFIG_IEEE80211AX=y
 +CONFIG_IEEE80211AX=y
 ```
+
+### 1.2 驱动
+
+本人使用SparkLAN公司生产的[WNFQ-269AX(BT)](https://www.sparklan.com/product/wnfq-269axbt-wifi6-wifi6e-11ax-triband-m-2-dbdc-module/)Wi-Fi 6E无线网卡
 
 ## 2. 配置
 
