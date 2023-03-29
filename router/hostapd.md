@@ -46,14 +46,6 @@
 @endmindmap
 ```
 
-FDM vs OFDM:
-
-![1](https://www.researchgate.net/profile/Ufuk-Tamer/publication/346403990/figure/fig2/AS:962578058588160@1606507901355/Spectrum-Usage-OFDM-vs-FDM-21.ppm)
-
-OFDM vs OFDMA:
-
-![2](https://miro.medium.com/v2/resize:fit:1400/0*aQFX9fRJY_OaCouE)
-
 | IEEE标准 | 最小子载波频率(kHz) | 20MHz数据子载波数 | 40MHz数据子载波数 | 80MHz数据子载波数 | 160MHz数据子载波数 |
 | -------- | :-----------------: | :---------------: | :---------------: | :---------------: | :----------------: |
 | 802.11ax |       78.125        |        234        |        468        |        980        |       2x980        |
@@ -63,13 +55,13 @@ OFDM vs OFDMA:
 #### 传输速率
 
 $$
-理论传输速率=空间流数\times\frac{1}{𝑆𝑦𝑚𝑏𝑜𝑙传输时长+𝐺𝐼}\times𝑆𝑦𝑚𝑏𝑜𝑙二进制长度\times编码率\times数据子载波数
+理论传输速率=空间流数\times\frac{1}{符号传输时间+𝐺𝐼}\times符号编码长度\times编码率\times数据子载波数
 $$
 
 由于计算过于麻烦，所以一般直接查[调制编码方案表](https://en.wikipedia.org/wiki/Wi-Fi_6#cite_note-17)可以直接得到单空间流的速率。
 
 <table>
-<caption>调制编码方案
+<caption><b>调制编码方案</b>
 </caption>
 <tbody><tr>
 <th rowspan="3">MCS<br>index
@@ -270,23 +262,96 @@ $$
 [config](https://github.com/archlinux/svntogit-community/blob/packages/hostapd/trunk/config#L162)修改
 
 ```diff
- # IEEE 802.11ax HE support
+--- config.old
++++ config
+@@ -159,7 +159,7 @@
  # Note: This is experimental and work in progress. The definitions are still
  # subject to change and this should not be expected to interoperate with the
  # final IEEE 802.11ax version.
 -#CONFIG_IEEE80211AX=y
 +CONFIG_IEEE80211AX=y
+
+ # Remove debugging code that is printing out debug messages to stdout.
+ # This can be used to reduce the size of the hostapd considerably if debugging
 ```
 
 ### 1.2 驱动
 
 本人使用SparkLAN公司生产的[WNFQ-269AX(BT)](https://www.sparklan.com/product/wnfq-269axbt-wifi6-wifi6e-11ax-triband-m-2-dbdc-module/)Wi-Fi 6E无线网卡
 
+主要规格
+
+| **属性** | **值**                                                         |
+| -------- | -------------------------------------------------------------- |
+| Wi-Fi    | IEEE 802.11ax/ac/a/b/g/n                                       |
+| 蓝牙     | Bluetooth V5.2, V5.1, V5.0, V4.2, V4.1, V4.0LE, V3.0, V2.1+EDR |
+| 芯片     | Qualcomm Atheros WCN6856                                       |
+| 天线     | 2 x IPEX MHF4                                                  |
+| 支持频率 | 2.412\~2.484GHz, 5.150\~5.850GHz, 5.925\~7.125GHz              |
+
+`linux-firmware`在`20230310`标签之后才支持该网卡，对于之前版本需要自己动手修改[kvalo/ath11k-firmware](https://github.com/kvalo/ath11k-firmware)
+
+```bash
+git clone https://github.com/kvalo/ath11k-firmware.git
+mkdir WCN6855
+cp ath11k-firmware/WCN6855/hw2.0/board-2.bin WCN6855/board-2.bin
+cd WCN6855
+xz --check=crc32 board-2.bin
+sudo cp /lib/firmware/ath11k/WCN6855/hw2.0/board-2.bin.xz /lib/firmware/ath11k/WCN6855/hw2.0/board-2.bin.xz.orig
+sudo cp board-2.bin.xz /lib/firmware/ath11k/WCN6855/hw2.0/board-2.bin.xz
+sudo modprobe -r ath11k_pci
+sudo modprobe ath11k_pci
+```
+
+`ifconfig`未找到无线网卡设备，并且`sudo dmesg | grep ath11k`提示`failed to fetch board data`，可能是[kvalo/ath11k-firmware](https://github.com/kvalo/ath11k-firmware)未收录该型号的无线网卡
+
+```shell
+$ sudo dmesg | grep ath11k
+[ 1843.023186] ath11k_pci 0000:06:00.0: BAR 0: assigned [mem 0xfba00000-0xfbbfffff 64bit]
+[ 1843.023513] ath11k_pci 0000:06:00.0: MSI vectors: 32
+[ 1843.023517] ath11k_pci 0000:06:00.0: wcn6855 hw2.1
+[ 1843.982736] ath11k_pci 0000:06:00.0: chip_id 0x12 chip_family 0xb board_id 0xff soc_id 0x400c1211
+[ 1843.982747] ath11k_pci 0000:06:00.0: fw_version 0x11090c35 fw_build_timestamp 2022-04-18 20:23 fw_build_id WLAN.HSP.1.1-03125-QCAHSPSWPL_V1_V2_SILICONZ_LITE-3.6510.9
+[ 1844.003923] ath11k_pci 0000:06:00.0: failed to fetch board data for bus=pci,vendor=17cb,device=1103,subsystem-vendor=11ad,subsystem-device=a85d,qmi-chip-id=18,qmi-board-id=255 from ath11k/WCN6855/hw2.1/board-2.bin
+[ 1844.003927] ath11k_pci 0000:06:00.0: failed to fetch board.bin from WCN6855/hw2.1
+[ 1844.003928] ath11k_pci 0000:06:00.0: qmi failed to fetch board file: -2
+[ 1844.003929] ath11k_pci 0000:06:00.0: failed to load board data file: -2
+```
+
+需要使用[qca/qca-swiss-army-knife](https://github.com/qca/qca-swiss-army-knife)来编辑board-2.bin
+
+```bash
+git clone https://github.com/qca/qca-swiss-army-knife.git
+./qca-swiss-army-knife/tools/scripts/ath11k/ath11k-bdencoder -e board-2.bin -o board-2.json
+```
+
+找到`board-2.json`中`data`最接近`sudo dmesg | grep ath11k`没能匹配到的设备，例如`bus=pci,vendor=17cb,device=1103,subsystem-vendor=11ad,subsystem-device=a85d,qmi-chip-id=18,qmi-board-id=255`，增加到对应的`name`列表中
+
+`board-2.json`
+
+```json
+...
+            {
+                "names": [
+                    "bus=pci,vendor=17cb,device=1103,subsystem-vendor=11ad,subsystem-device=a85d,qmi-chip-id=18,qmi-board-id=255",
+                    "[对应的无线网卡设备]",
+                ],
+                "data": "bus=pci,vendor=17cb,device=1103,subsystem-vendor=11ad,subsystem-device=a85d,qmi-chip-id=18,qmi-board-id=255.bin"
+            },
+...
+```
+
+然后重新打包生成新的`board-2.bin`
+
+```bash
+./qca-swiss-army-knife/tools/scripts/ath11k/ath11k-bdencoder -c board-2.json -o board-2.bin
+```
+
 ## 2. 配置
 
 ### 2.1 参考配置
 
-```conf
+```ini
 interface=wlan0
 bridge=br-lan
 driver=nl80211
@@ -368,8 +433,8 @@ he_oper_centr_freq_seg0_idx=50
 
 #### HT特性
 
-```console
-> iw phy
+```shell
+$ iw phy
 ...
         Band 1:
                 Capabilities: 0x19e3
@@ -398,8 +463,8 @@ he_oper_centr_freq_seg0_idx=50
 
 #### VHT特性
 
-```console
-> iw phy
+```shell
+$ iw phy
 ...
         Band 2:
 ...
@@ -435,8 +500,8 @@ he_oper_centr_freq_seg0_idx=50
 
 #### HT特性
 
-```console
-> iw phy
+```shell
+$ iw phy
 ...
         Band 4:
                 HE Iftypes: managed
