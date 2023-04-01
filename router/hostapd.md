@@ -592,3 +592,11 @@ $ iw phy
                                 RX 1024-QAM
 ...
 ```
+
+## 3. 参考
+
+1. [hostapd.conf](https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf)
+2. [Wi-Fi 6 - Wikipedia](https://en.wikipedia.org/wiki/Wi-Fi_6)
+3. [Getting WiFi to work on a Razer Blade 14 (2022) - Daniel Perez](https://daniel.perez.sh/blog/2022/blade14-wifi/)
+4. [beacon帧字段结构最全总结（二）——HT字段总结 - fengf233 - 博客园](https://www.cnblogs.com/fengf233/p/10919436.html)
+5. [beacon帧字段结构最全总结（三）——VHT字段总结 - fengf233 - 博客园](https://www.cnblogs.com/fengf233/p/10919436.html)
