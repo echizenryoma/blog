@@ -376,12 +376,15 @@ country CN: DFS-FCC
 
 ```bash
 #!/bin/bash
+
 echo "ip link set wlan0 up"
 ip link set wlan0 up
 
+phy=$(iw dev wlan0 info | grep wiphy | awk '{print "phy"$2}')
+
 for i in {1..16}
 do
-  country=$(iw phy phy0 reg get | grep country | awk '{print $2}' | tr -d ':')
+  country=$(iw phy $phy reg get | grep country | awk '{print $2}' | tr -d ':')
   if [[ "$country" != "00" ]]
   then
     echo "find iw reg $country"
@@ -394,6 +397,7 @@ done
 
 echo "not found country"
 exit 1
+
 ```
 
 ## 2. 配置
