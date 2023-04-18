@@ -413,12 +413,13 @@ ssid=[热点名]
 utf8_ssid=1
 hw_mode=a
 channel=36
+preamble=1
 
 ieee80211w=1
 wpa=2
 wpa_passphrase=[密码]
 wpa_key_mgmt=WPA-PSK WPA-PSK-SHA256 SAE
-wpa_pairwise=CCMP
+wpa_pairwise=CCMP CCMP-256 GCMP GCMP-256
 
 ieee80211h=1
 
@@ -430,7 +431,7 @@ wmm_enabled=1
 ht_capab=[LDPC][HT40+][SHORT-GI-20][SHORT-GI-40][TX-STBC][RX-STBC1][MAX-AMSDU-7935][DSSS_CCK-40]
 
 ieee80211ac=1
-vht_capab=[MAX-MPDU-11454][RXLDPC][VHT160][SHORT-GI-80][SHORT-GI-160][TX-STBC-2BY1][RX-STBC-1][SU-BEAMFORMER][SU-BEAMFORMEE][MAX-A-MPDU-LEN-EXP3][RX-ANTENNA-PATTERN][TX-ANTENNA-PATTERN]
+vht_capab=[MAX-MPDU-11454][RXLDPC][VHT160][SHORT-GI-80][SHORT-GI-160][TX-STBC-2BY1][RX-STBC-1][SU-BEAMFORMER][SU-BEAMFORMEE][MAX-A-MPDU-LEN-EXP3]
 vht_oper_chwidth=2
 vht_oper_centr_freq_seg0_idx=50
 
@@ -550,52 +551,6 @@ $ iw phy
 * [SU-BEAMFORMEE]
 * [RX-ANTENNA-PATTERN]
 * [TX-ANTENNA-PATTERN]
-
-#### HT特性
-
-```shell
-$ iw phy
-...
-        Band 4:
-                HE Iftypes: managed
-                        HE MAC Capabilities (0x000b9a100840):
-                                +HTC HE Supported
-                                TWT Requester
-                                Dynamic BA Fragementation Level: 1
-                                Broadcast TWT
-                                OM Control
-                                Maximum A-MPDU Length Exponent: 3
-                                RX Control Frame to MultiBSS
-                                A-MSDU in A-MPDU
-                                UL 2x996-Tone RU
-                        HE PHY Capabilities: (0x0c334c89fd0980c80e0c00):
-                                HE40/HE80/5GHz
-                                HE160/5GHz
-                                Punctured Preamble RX: 3
-                                Device Class: 1
-                                LDPC Coding in Payload
-                                STBC Tx <= 80MHz
-                                STBC Rx <= 80MHz
-                                Full Bandwidth UL MU-MIMO
-                                DCM Max Constellation: 1
-                                DCM Max Constellation Rx: 1
-                                SU Beamformer
-                                SU Beamformee
-                                Beamformee STS <= 80Mhz: 7
-                                Beamformee STS > 80Mhz: 7
-                                Sounding Dimensions <= 80Mhz: 1
-                                Sounding Dimensions > 80Mhz: 1
-                                PPE Threshold Present
-                                Max NC: 1
-                                STBC Tx > 80MHz
-                                STBC Rx > 80MHz
-                                20MHz in 40MHz HE PPDU 2.4GHz
-                                20MHz in 160/80+80MHz HE PPDU
-                                80MHz in 160/80+80MHz HE PPDU
-                                TX 1024-QAM
-                                RX 1024-QAM
-...
-```
 
 ## 3. 参考
 
