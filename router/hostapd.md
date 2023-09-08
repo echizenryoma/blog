@@ -418,8 +418,8 @@ preamble=1
 ieee80211w=1
 wpa=2
 wpa_passphrase=[密码]
-wpa_key_mgmt=WPA-PSK WPA-PSK-SHA256 SAE
-wpa_pairwise=CCMP CCMP-256 GCMP GCMP-256
+wpa_key_mgmt=WPA-PSK SAE
+wpa_pairwise=CCMP CCMP-256
 
 ieee80211h=1
 
