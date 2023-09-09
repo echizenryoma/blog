@@ -377,10 +377,12 @@ country CN: DFS-FCC
 ```bash
 #!/bin/bash
 
-echo "ip link set wlan0 up"
-ip link set wlan0 up
+wlan="wlan0"
 
-phy=$(iw dev wlan0 info | grep wiphy | awk '{print "phy"$2}')
+echo "ip link set $wlan up"
+ip link set $wlan up
+
+phy=$(iw dev $wlan info | grep wiphy | awk '{print "phy"$2}')
 
 for i in {1..16}
 do
@@ -391,13 +393,12 @@ do
     sed -i "s|^country_code=.*|country_code=$country|" /etc/hostapd/hostapd.conf
     exit 0
   fi
-  echo "iw dev wlan0 scan"
-  iw dev wlan0 scan > /dev/null
+  echo "iw dev $wlan scan"
+  iw dev $wlan scan > /dev/null
 done
 
 echo "not found country"
 exit 1
-
 ```
 
 ## 2. 配置
