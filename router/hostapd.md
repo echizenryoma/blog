@@ -385,7 +385,7 @@ phy=$(iw dev wlan0 info | grep wiphy | awk '{print "phy"$2}')
 for i in {1..16}
 do
   country=$(iw phy $phy reg get | grep country | awk '{print $2}' | tr -d ':')
-  if [[ "$country" != "00" ]]
+  if [[ "$country" =~ ^[A-Z]{2}$ ]]
   then
     echo "find iw reg $country"
     sed -i "s|^country_code=.*|country_code=$country|" /etc/hostapd/hostapd.conf
