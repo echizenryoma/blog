@@ -68,7 +68,7 @@ pacstrap /mnt base linux-lts linux-firmware nano dhcpcd openssh grub intel-ucode
 arch-chroot /mnt
 ```
 
-### 2.3 新系统配置
+### 2.4 新系统配置
 
 * 设置DNS解析器: `echo 'nameserver 1.1.1.1' >> /etc/resolv.conf`
 * 设置默认时区: `ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
@@ -77,10 +77,9 @@ arch-chroot /mnt
 * 禁用密码登录: `echo "PasswordAuthentication no" >> /etc/ssh/sshd_config`
 * 允许root使用私钥登陆: `echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config`
 * 设置登陆公钥
-* 设置/etc/mkinitcpio.conf: `sed -i "s|^HOOKS=(.*)|HOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block filesystems fsck)|g" /etc/mkinitcpio.conf`
+* 设置/etc/mkinitcpio.conf: `sed -i "s|^HOOKS=(.*)|HOOKS=(base systemd autodetect modconf kms keyboard block filesystems fsck)|g" /etc/mkinitcpio.conf`
 * pacman染色: `sed -i 's|#Color|Color|' /etc/pacman.conf`
 * pacman并行下载: `sed -i 's|#ParallelDownloads|ParallelDownloads|' /etc/pacman.conf`
-* 创建/etc/vconsole.conf: `touch /etc/vconsole.conf`
 
 ### 2.4 Hyper-V
 
