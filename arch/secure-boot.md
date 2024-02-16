@@ -18,7 +18,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 * 安装`sbctl`
 
-```bash
+```shell
 pacman -S sbctl
 ```
 
