@@ -9,21 +9,21 @@
 
 ### 1.1 bootstrap
 
-```bash
+```shell
 wget "https://mirrors.kernel.org/archlinux/iso/latest/archlinux-bootstrap-x86_64.tar.gz" -O /archlinux-bootstrap-x86_64.tar.gz
 mkdir /install
 tar xzf /archlinux-bootstrap-x86_64.tar.gz --numeric-owner
 ```
 
 进入arch提供的`bootstrap`环境
-```bash
+```shell
 /install/root.x86_64/bin/arch-chroot /install/root.x86_64/
 ```
 
 
 ### 1.2 pacman配置
 
-```bash
+```shell
 echo 'Server = https://mirrors.kernel.org/archlinux/$repo/os/$arch' >> /etc/pacman.d/mirrorlist
 pacman-key --init
 pacman-key --populate
@@ -31,21 +31,21 @@ pacman-key --populate
 
 ### 1.3 挂载目录
 
-```bash
+```shell
 mount /dev/sda1 /mnt
 mount /dev/sda15 /mnt/boot/efi
 ```
 
 ### 1.4 备份/etc/fstab
 
-```bash
+```shell
 cp /mnt/etc/fstab /etc/fstab
 ```
 
 ### 1.5 删除原系统
 
 ⚠️此操作不可逆
-```bash
+```shell
 rm -rf bin boot etc home opt root sbin srv usr var vml* ini* lib* med* snap* *.tar.gz
 ```
 
@@ -53,7 +53,7 @@ rm -rf bin boot etc home opt root sbin srv usr var vml* ini* lib* med* snap* *.t
 
 ### 2.1 安装软件包
 
-```bash
+```shell
 pacstrap /mnt base linux-lts linux-firmware nano dhcpcd openssh grub intel-ucode amd-ucode
 ```
 
@@ -64,7 +64,7 @@ pacstrap /mnt base linux-lts linux-firmware nano dhcpcd openssh grub intel-ucode
 
 ### 2.3 进入新系统
 
-```bash
+```shell
 arch-chroot /mnt
 ```
 
@@ -97,7 +97,7 @@ arch-chroot /mnt
 * 安装grub: `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch`
 * 生成grub配置: `grub-mkconfig -o /boot/grub/grub.cfg`
 * 由于Hyper-V只能通过`/EFI/BOOT/BOOTX64.EFI`引导，所以需要复制引导程序
-```bash
+```shell
 mkdir -p /boot/efi/EFI/BOOT
 cp /boot/efi/EFI/arch/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 ```
