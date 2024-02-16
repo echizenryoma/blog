@@ -84,11 +84,12 @@ arch-chroot /mnt
 ### 2.4 Hyper-V
 
 * 安装软件包: `pacman -Sy hyperv --noconfirm --needed`
-* 启用hv_fcopy_daemon服务: `systemctl enable hv_fcopy_daemon.service`
-* 启用hv_kvp_daemon服务: `systemctl enable hv_kvp_daemon.service`
-* 启用hv_vss_daemon服务: `systemctl enable hv_vss_daemon.service`
 * 设置串行输出: `sed -i 's|^GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 rootdelay=300 console=ttyS0 earlyprintk=ttyS0"|g' /etc/default/grub`
 * 设置模块: `sed -i "s|^MODULES=(.*)|MODULES=(hv_storvsc hv_vmbus)|g" /etc/mkinitcpio.conf`
+* 启用hv_fcopy_daemon服务(可选): `systemctl enable hv_fcopy_daemon.service`
+* 启用hv_kvp_daemon服务(可选): `systemctl enable hv_kvp_daemon.service`
+* 启用hv_vss_daemon服务(可选): `systemctl enable hv_vss_daemon.service`
+
 
 ### 2.5 引导器
 
