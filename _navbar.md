@@ -1,6 +1,6 @@
-- arch
+- <i class="nf nf-linux-archlinux"></i>arch
   - [在Azure云上安装archlinux](/arch/install-archlinux-on-azure.md)
   - [UEFI安全启动](/arch/secure-boot.md)
-- 路由器
+- <i class="nf nf-md-router_wireless"></i>路由器
   - [hostapd](/router/hostapd.md)
-- [关于](/README.md)
+- <i class="nf nf-md-home"></i>[关于](/README.md)
