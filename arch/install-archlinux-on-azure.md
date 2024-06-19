@@ -1,4 +1,4 @@
-# 在Azure云上安装archlinux
+# Azure安装archlinux
 
 ## 0. 简介
 

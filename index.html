@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/style.min.css" />
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/prismjs/themes/prism.min.css" />
   <link rel="stylesheet" href="//www.nerdfonts.com/assets/css/webfont.css" />
-  </style>
 </head>
 
 <body>
@@ -35,7 +34,8 @@
         successText: '已复制'
       },
       plantuml: {
-        skin: 'default'
+        skin: 'default',
+        renderSvgAsObject: true,
       },
       latex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -45,8 +45,8 @@
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-count/dist/countable.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-plantuml/dist/docsify-plantuml.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme/dist/index.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-latex"></script>

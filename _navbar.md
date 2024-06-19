@@ -1,5 +1,6 @@
 - <i class="nf nf-linux-archlinux"></i>arch
-  - [在Azure云上安装archlinux](/arch/install-archlinux-on-azure.md)
+  - [VPS安装archlinux](/arch/install-archlinux-on-azure.md)
+  - [Azure安装archlinux](/arch/install-archlinux-on-vps.md)
   - [UEFI安全启动](/arch/secure-boot.md)
 - <i class="nf nf-md-router_wireless"></i>路由器
   - [hostapd](/router/hostapd.md)
