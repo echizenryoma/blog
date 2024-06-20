@@ -553,7 +553,7 @@ $ iw phy
 * [RX-ANTENNA-PATTERN]
 * [TX-ANTENNA-PATTERN]
 
-## 3. 参考
+## 参考
 
 1. [hostapd.conf](https://w1.fi/cgit/hostap/plain/hostapd/hostapd.conf)
 2. [Wi-Fi 6 - Wikipedia](https://en.wikipedia.org/wiki/Wi-Fi_6)

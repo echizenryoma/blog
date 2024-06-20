@@ -75,7 +75,7 @@ sbctl verify
 2. 启用“安全启动”(Secure Boot)
 3. 保存后重启
 
-## 2. 参考
+## 参考
 
 1. [My easy method for setting up Secure Boot with GRUB](https://www.reddit.com/r/archlinux/comments/10pq74e/my_easy_method_for_setting_up_secure_boot_with/)
 2. [Unified Extensible Firmware Interface/Secure Boot](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot)
