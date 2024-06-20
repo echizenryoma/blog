@@ -1,3 +1,5 @@
+- <i class="nf nf-md-code_braces_box"></i>code
+  - [LeetCode](/code/leetcode.md)
 - <i class="nf nf-linux-archlinux"></i>arch
   - [VPS安装archlinux](/arch/install-archlinux-on-vps.md)
   - [UEFI安全启动](/arch/secure-boot.md)
