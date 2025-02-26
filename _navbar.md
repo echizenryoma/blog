@@ -4,7 +4,7 @@
   - [VPS安装archlinux](/arch/install-archlinux-on-vps.md)
   - [UEFI安全启动](/arch/secure-boot.md)
 - <i class="nf nf-md-router_wireless"></i>Apple
-  - [hostapd](/apple/vmware-fusion.md)
+  - [VMware Fusion](/apple/vmware-fusion.md)
 - <i class="nf nf-md-router_wireless"></i>路由器
   - [hostapd](/router/hostapd.md)
 - <i class="nf nf-md-home"></i>[关于](/README.md)
