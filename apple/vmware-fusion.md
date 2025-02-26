@@ -2,9 +2,9 @@
 
 ## Windows 11 arm64
 
-### 驱动缺失问题
+### 驱动缺失
 
-#### Base System Device
+#### 1. Base System Device
 
 ##### 硬件ID
 
@@ -17,7 +17,7 @@ PCI\VEN_15AD&DEV_0740&CC_0880
 
 修改vmx文件，将`vmci0.present = "TRUE"`修改为`vmci0.present = "FALSE"`
 
-#### Universal Serial Bus (USB) Controller
+#### 2. Universal Serial Bus (USB) Controller
 
 ##### 硬件ID
 
