@@ -7,5 +7,5 @@
 - <i class="nf nf-md-apple"></i>Apple
   - [VMware Fusion](/apple/vmware-fusion.md)
 - <i class="nf nf-md-math_norm_box"></i>数学
-  - [洛必达](/apple/l-hopital.md)
+  - [洛必达](/math/l-hopital.md)
 - <i class="nf nf-md-home"></i>[关于](/README.md)
