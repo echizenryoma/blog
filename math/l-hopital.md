@@ -28,19 +28,19 @@ $$\begin{align}
                 &= 2^2\cos{2^2\theta}\cos{2\theta}\sin{2\theta} \\
                 &= 2^3\cos{2^2\theta}\cos{2\theta}\cos{\theta}\sin{\theta} \\
 \cdots  \\
-\therefore \sin{2^n\theta} &= 2^n\cos{2^{n-1}\theta}\cdots\cos{2\theta}\cos{\theta}\sin{\theta} \\
+\therefore \sin{2^n\theta} &= 2^n\cos{2^n\theta}\cdots\cos{2\theta}\cos{\theta}\sin{\theta} \\
 \text{令} x &= 2^n\theta \\
 \sin{x} &= 2^n\cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\sin{\frac{x}{2^n}} \\
 \frac{\sin{x}}{\frac{x}{2^n}} &= \frac{2^n\cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
 2^n\frac{\sin{x}}{x} &= \frac{2^n\cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
-\frac{\sin{x}}{x} &= \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^{n-1}}}\frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
-\lim_{n\to\infty} \frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^{n-1}}}\frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
-\frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^{n-1}}}\frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
-\frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^{n-1}}}\lim_{n\to\infty} \frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
+\frac{\sin{x}}{x} &= \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
+\lim_{n\to\infty} \frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
+\frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
+\frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}}\lim_{n\to\infty} \frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} \\
 \because \lim_{n\to\infty}\frac{x}{2^n} &= 0 \\
 \therefore \lim_{n\to\infty}\sin{\frac{x}{2^n}} &= 0 \\
 \because \lim_{x\to0}\frac{\sin{x}}{x} &= 1 \\
-\therefore \lim_{n\to\infty} \frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^{n-1}}} &= 1 \\
+\therefore \lim_{n\to\infty} \frac{\sin{\frac{x}{2^n}}}{\frac{x}{2^n}} &= 1 \\
 \therefore \frac{\sin{x}}{x} &= \lim_{n\to\infty} \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots\cos{\frac{x}{2^n}} \\
 \frac{\sin{x}}{x} &= \cos{\frac{x}{2}}cos{\frac{x}{2^2}}\cdots \\
 \text{令} x &= \frac{\pi}{2} \\
