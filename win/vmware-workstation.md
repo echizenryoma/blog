@@ -6,7 +6,7 @@
 
 #### 问题
 
-![Windows 10虚拟机显示问题](https://scontent-nrt1-2.cdninstagram.com/v/t51.2885-15/482051855_17898114708120530_2430210207834297915_n.jpg?stp=dst-jpg_e15_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi45NjR4NjM1LnNkci5mNzU3NjEuZGVmYXVsdF9pbWFnZSJ9&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_cat=102&_nc_oc=Q6cZ2AEwHACaewAf3i36xGInZ5349WlVpIchnXMelyjefKtr6VPy42SVEiBYQXIXD3qyDEM&_nc_ohc=FctlNOJO4KMQ7kNvgGhEY-k&_nc_gid=e5cc112406e24da0b6db09d0998e5e30&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzU3NzA5ODQ3ODE0MTYyNzU4Nw%3D%3D.3-ccb7-5&oh=00_AYDvsDOrELsRMcn0azX2lbIV84-IvQ0FMdldpnNja-Q-eg&oe=67CA3772&_nc_sid=10d13b)
+![Windows 10虚拟机显示问题](/win/vmware-workstation-01.jpg)
 
 表现为随机的撕裂，周期卡死的情况
 
