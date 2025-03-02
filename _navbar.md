@@ -6,8 +6,8 @@
   - [hostapd](/arch/hostapd.md)
 - <i class="nf nf-md-apple"></i>MacOS
   - [VMware Fusion](/apple/vmware-fusion.md)
-- <i class="nf nf-custom-windows"></i>Windows
-  - [VMware Station](/apple/vmware-workstation.md)
+- <i class="nf nf-md-microsoft_windows"></i>Windows
+  - [VMware Station](/win/vmware-workstation.md)
 - <i class="nf nf-md-math_norm_box"></i>数学
   - [洛必达](/math/l-hopital.md)
 - <i class="nf nf-md-home"></i>[关于](/README.md)
