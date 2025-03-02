@@ -6,7 +6,7 @@
 
 #### 问题
 
-![Windows 10虚拟机显示问题](/win/vmware-workstation-01.jpg)
+![Windows 10虚拟机显示问题](vmware-workstation-01.jpg)
 
 表现为随机的撕裂，周期卡死的情况
 
