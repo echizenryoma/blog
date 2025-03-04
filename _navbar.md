@@ -10,4 +10,5 @@
   - [VMware Station](/win/vmware-workstation.md)
 - <i class="nf nf-md-math_norm_box"></i>数学
   - [洛必达](/math/l-hopital.md)
+  - [微分方程](/math/differential-equation.md)
 - <i class="nf nf-md-home"></i>[关于](/README.md)
