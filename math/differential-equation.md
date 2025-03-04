@@ -55,7 +55,7 @@
    y &= C_1 e^{\int \frac{Q(x)}{y} - P(x)dx} \\
      &= C_1 e^{-P(x)dx} \cdot e^{\int \frac{Q(x)}{y}dx}
    \end{align}$$
-   其中的$C_1 e^{-P(x)dx}$是一阶线性齐次微分方程$y' + P(x)y = 0$的通解，$e^{\int \frac{Q(x)}{y}dx}$是关于x的函数，也即
+   其中的$C_1 e^{-P(x)dx}$是一阶线性齐次微分方程$y' + P(x)y = 0$的通解，$e^{\int \frac{Q(x)}{y}dx}$是关于$x$的函数，也即
 
    $$
    y = C(x) e^{-P(x)dx},\text{其中}C(x)=C_1 e^{\int \frac{Q(x)}{y}dx}
