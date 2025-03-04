@@ -23,7 +23,7 @@
    \ln|y| = -\int P(x)dx + C, C\text{为常数}
    $$
 
-3. **解出$y$**：对两边取指数函数，得到通解：
+3. **解出y**：对两边取指数函数，得到通解：
    $$
    y = C e^{-\int P(x)dx}
    $$
@@ -50,7 +50,7 @@
    \ln|y| = -\int (\frac{Q(x)}{y} - P(x))dx + C_1, C_1\text{为常数}
    $$
 
-3. **解出$y$**：对两边取指数函数，得到通解：
+3. **解出y**：对两边取指数函数，得到通解：
    $$\begin{align}
    y &= C_1 e^{\int \frac{Q(x)}{y} - P(x)dx} \\
      &= C_1 e^{-P(x)dx} \cdot e^{\int \frac{Q(x)}{y}dx}
