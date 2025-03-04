@@ -44,7 +44,7 @@
 
 2. **积分求解**：对两边积分：
    $$
-   \int \frac{1}{y} \, dy = -\int (\frac{Q(x)}{y} - P(x)) \, dx
+   \int \frac{1}{y} \, dy = \int (\frac{Q(x)}{y} - P(x)) \, dx
    $$
    $$
    \ln|y| = -\int (\frac{Q(x)}{y} - P(x))dx + C_1, C_1\text{为常数}
