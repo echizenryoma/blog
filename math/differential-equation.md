@@ -52,11 +52,11 @@
 
 3. **解出y**：对两边取指数函数，得到通解：
    $$\begin{align}
-   y &= C_1 e^{\int \frac{Q(x)}{y} - P(x)dx} \\
-     &= C_1 e^{-P(x)dx} \cdot e^{\int \frac{Q(x)}{y}dx}
+   y &= C_1 e^{\int \frac{Q(x)}{y} - P(x) dx} \\
+     &= C_1 e^{\int -P(x)dx} dx \cdot e^{\int \frac{Q(x)}{y}dx}
    \end{align}$$
    其中的$C_1 e^{-P(x)dx}$是一阶线性齐次微分方程$y' + P(x)y = 0$的通解，$e^{\int \frac{Q(x)}{y}dx}$是关于$x$的函数，也即
 
    $$
-   y = C(x) e^{-P(x)dx},\text{其中}C(x)=C_1 \cdot e^{\int \frac{Q(x)}{y}dx}
+   y = C(x) e^{-\int P(x) dx},\text{其中}C(x)=C_1 \cdot e^{\int \frac{Q(x)}{y}dx}
    $$
